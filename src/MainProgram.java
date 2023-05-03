@@ -8,7 +8,7 @@ class MainProgram {
     private static int[] numbers;
 
     public static void main(String[] args){
-        withNegatives = false;
+        withNegatives = true;
         maxAbsolute = 100;
         numbers = new int[10];
         fillArray(numbers, withNegatives, maxAbsolute);
@@ -20,6 +20,7 @@ class MainProgram {
         System.out.println("Summe aller Zahlen im Array: " + sumUp(numbers));
         System.out.println("In diesem Array gibt es " + countNegatives(numbers) + " negative Zahlen.");
         System.out.println("Summe der negativen Zahlen: " + sumUpNegatives(numbers));
+        findMaximum(numbers);
     }
 
     private static void fillArray(int[] array, boolean wN, int maxA){
@@ -56,7 +57,9 @@ class MainProgram {
      */
     private static int sumUp(int[] array){
         int result = 0;
-        //Hier muss Quellcode ergänzt werden.
+        for(int i = 0; i < array.length; i++){
+            result = result + array[i];
+        }
         return result;
     }
 
@@ -69,7 +72,11 @@ class MainProgram {
      */
     private static int countNegatives(int[] array){
         int result = 0;
-        //Hier muss Quellcode ergänzt werden.
+        for(int i = 0; i < array.length; i++){
+            if(array[i] < 0){
+                result = result + 1;
+            }
+        }
         return result;
     }
 
@@ -82,7 +89,11 @@ class MainProgram {
      */
     private static int sumUpNegatives(int[] array){
         int result = 0;
-        //Hier muss Quellcode ergänzt werden.
+        for(int i = 0; i < array.length; i++){
+            if(array[i] < 0){
+                result = result + array[i];
+            }
+        }
         return result;
     }
 
@@ -93,7 +104,18 @@ class MainProgram {
      * übergeben bekommt und die den größten Wert in diesem Array zurückgibt.
      * Tipp: Versuchen Sie, mit einem Durchlauf durch das Array zu kommen.
      */
-
+    private static void findMaximum(int[] array){
+        int max = 0;
+        for(int i = 0; i< array.length; i++){
+            if(i == 0){
+                max = array[i];
+            }
+            if(array[i] > max){
+                max = array[i];
+            }
+        }
+        System.out.println(max);
+    }
 
 
     /** 5. Bestimmen des Index des Maximums in einem Feld
