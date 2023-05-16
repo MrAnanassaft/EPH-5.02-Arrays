@@ -20,8 +20,11 @@ class MainProgram {
         System.out.println("Summe aller Zahlen im Array: " + sumUp(numbers));
         System.out.println("In diesem Array gibt es " + countNegatives(numbers) + " negative Zahlen.");
         System.out.println("Summe der negativen Zahlen: " + sumUpNegatives(numbers));
-        findMaximum(numbers);
-        findMaximumIndex(numbers);
+        System.out.println(findMaximumIndex(numbers));
+        System.out.println(findMaximum(numbers));
+        System.out.println(findAmountOfMax(numbers));
+
+
     }
 
     private static void fillArray(int[] array, boolean wN, int maxA){
@@ -105,15 +108,14 @@ class MainProgram {
      * übergeben bekommt und die den größten Wert in diesem Array zurückgibt.
      * Tipp: Versuchen Sie, mit einem Durchlauf durch das Array zu kommen.
      */
-    private static void findMaximum(int[] array){
-        int max = 0;
-        for(int i = 0; i< array.length; i++){
-            max = array[0];
+    private static int findMaximum(int[] array){
+        int max = array[0];
+        for(int i = 1; i < array.length; i++){
             if(array[i] > max){
                 max = array[i];
             }
         }
-        System.out.println("maximum = " + max);
+        return max;
     }
 
 
@@ -123,9 +125,9 @@ class MainProgram {
      * Tipp: Versuchen Sie, mit einem Durchlauf durch das Array zu kommen.
      */
 
-    private static void findMaximumIndex(int[] array){
+    private static int findMaximumIndex(int[] array){
         int index = 0;
-        int max = 0;
+        int max = array[0];
         for(int i = 0; i< array.length; i++){
             max = array[0];
             if(array[i] > max){
@@ -133,15 +135,27 @@ class MainProgram {
                 index = i;
             }
         }
-        System.out.println("index = " + index);
-        System.out.println("wert von index = " + array[index]);
+        return index;
     }
+
 
     /** 6. Bestimmen der Häufigkeit des Maximums in einem Feld
      * Schreiben Sie eine Methode countMaximum, die ein Array des Typs int als Parameter
      * übergeben bekommt und die Häufigkeit der größten Zahl in diesem Array zurückgibt.
      */
-
+    private static int findAmountOfMax(int[] array){
+        int amount = 0;
+        int max = 0;
+        for(int i = 0; i< array.length; i++){
+            if(array[i] > max){
+                max = array[i];
+                amount = 1;
+            }else if(array[i] == max){
+                amount = amount +1;
+            }
+        }
+        return amount;
+    }
 
 
     /** 7. Sortierung prüfen
