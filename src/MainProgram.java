@@ -10,9 +10,9 @@ class MainProgram {
     public static void main(String[] args){
         withNegatives = true;
         maxAbsolute = 100;
-        numbers = new int[10];
+        numbers = new int[5];
         fillArray(numbers, withNegatives, maxAbsolute);
-
+        //setArray(numbers);
         showArray(numbers);
 
         //Hier sehen Sie Beispiele, wie man Methoden mit Rückgabewert aufrufen und dank der Systemkonsole testen kann.
@@ -23,9 +23,24 @@ class MainProgram {
         System.out.println(findMaximumIndex(numbers));
         System.out.println(findMaximum(numbers));
         System.out.println(findAmountOfMax(numbers));
-
-
+        System.out.println(isSorted(numbers));
+        System.out.println(checkArray(numbers));
     }
+
+
+
+    /*
+    public static void setArray(int[] array){
+
+        array[0] = 2;
+        array[1] = 54;
+        array[2] = 60;
+        array[3] = 54;
+        array[4] = 2;
+    }
+
+
+     */
 
     private static void fillArray(int[] array, boolean wN, int maxA){
         if(wN){
@@ -163,7 +178,20 @@ class MainProgram {
      * übergeben bekommt. Die Methode isSorted soll true zurückgeben, falls die im Array enthaltenen Werte aufsteigend sortiert sind.
      * Sonst soll false zurückgegeben werden.
      */
-
+    private static boolean isSorted(int[] array){
+        boolean check = false;
+        for(int i = 0; i< array.length-1; i++){
+            if(array[i] < array[i+1]){
+                check = true;
+            }else{
+                return false;
+            }
+        }
+        if(check == true){
+            return true;
+        }
+        return false;
+    }
 
 
     /** 8. Palindrome
@@ -173,7 +201,20 @@ class MainProgram {
      * ob es sich bei dem Array um ein Palindrom handelt.
      * Die Methode soll einen Wert des Typs boolean zurückgeben.
      */
-
+    public static boolean checkArray(int[] array){
+        boolean check = false;
+        for(int i = 0; i < array.length / 2; i++){
+            if(array[i] == array[array.length - i - 1]){
+                check = true;
+            }else{
+                check = false;
+            }
+            if(check == false){
+                return false;
+            }
+        }
+        return true;
+    }
 
 
     /** 9. Erhöhen der Inhalte eines Feldes
@@ -183,5 +224,11 @@ class MainProgram {
      * so soll ein neues(!) Array mit den Werten 97,24,18,73,28,89,60,54 zurückgegeben werden.
      */
 
-
+    private static int[] increaseArray(int[] array, int increase){
+        int[] newArray = array;
+        for(int i = 0; i < array.length; i++){
+            newArray[i] += increase;
+        }
+        return newArray;
+    }
 }
